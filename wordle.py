@@ -28,7 +28,7 @@ prompt=r'''      _.--._  _.--._
       \\\_.-"      :      "-._\
        \`_..--""--.;.--""--.._=>
         "'''
-rules=r'''1.You have to guess a five letter word.Each letters are unique in the target word.
+rules=r'''1.You have to guess a five letter word.Each letters are unique in the target word
 2.Your guess must be a word of length five
 3.The word you input must be of five unique letters'''
 print(rules)
