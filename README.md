@@ -1,4 +1,4 @@
-# Tic_Tac_Toe
+# Wordle
 To run the py file -
 Download it as a zip file
 To run the Python file
