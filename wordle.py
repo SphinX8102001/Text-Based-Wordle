@@ -16,7 +16,7 @@ nltk.download('words')
 words = nltk.corpus.words.words()
 word_list=[]    #Only contains valid five letter words(unique) and target word is picked from this list
 os.system('cls')
-print("Welcome to Wordle!")
+
 prompt=r'''      _.--._  _.--._
 ,-=.-":;:;:;\':;:;:;"-._
 \\\:;:;:;:;:;\:;:;:;:;:;\
@@ -30,15 +30,27 @@ prompt=r'''      _.--._  _.--._
         "'''
 rules=r'''1.You have to guess a five letter word.Each letters are unique in the target word
 2.Your guess must be a word of length five
-3.The word you input must be of five unique letters'''
-print(rules)
-for word in words:
-    word = word.strip()
-    if len(word)==5 and len(set(word))==5:
-        word_list.append(word.upper())
-
-def func(word_list):
+3.The word you input must be of five unique letters
+Type q to end the round/reveal the word'''
+prompt2 = r'''Green means the letter is in correct position
+Yellow means the letter is in the target word but not in the correct position
+Red means the letter is not in the target word'''
+def create_word_list():
+    for word in words:
+        word = word.strip()
+        if len(word)==5 and len(set(word))==5:
+            word_list.append(word.upper())
+    return word_list
+word_list = create_word_list()
+def Wordle(word_list):
+    print("Wordle!")
+    print()
     print(prompt)
+    print()
+    print(rules)
+    print()
+    print(prompt2)
+    print()
     count=0
     target=random.choice(word_list)
     sum=''
@@ -51,6 +63,9 @@ def func(word_list):
         while count<6 and sum!=target: # Changed count<6 to count<=6
 
             user_input=input(f'Guess {count+1}: ').upper()
+            if user_input == 'Q':
+                var = False
+                break
             sum2='' #user_input will be stripped of spaces and stored in this variable
             for i in user_input: #striping spaces from user input
                 if i!=' ':
@@ -86,15 +101,18 @@ def func(word_list):
 
     if not word_found:
         print('Target Word:',target)
+def PlayWordle():
+    x='y'
+    loop=True
+    while loop:
+        if x=='y':
 
-x='y'
-loop=True
-while loop:
-    if x=='y':
+            Wordle(word_list)
+            x=input('Play again? y/n :')
+            os.system('cls')
+        else:
+            input('press enter to go to the main menu')
+            loop=False
 
-        func(word_list)
-        x=input('again? y/n :')
-        os.system('cls')
-    else:
-        input('press enter to exit')
-        loop=False
+if __name__ == "__main__":
+    PlayWordle()
