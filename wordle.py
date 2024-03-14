@@ -111,7 +111,7 @@ def PlayWordle():
             x=input('Play again? y/n :')
             os.system('cls')
         else:
-            input('press enter to go to the main menu')
+            input('press enter to exit')
             loop=False
 
 if __name__ == "__main__":
